@@ -10,8 +10,8 @@ using NLua.Method;
 using NLua.Exceptions;
 using NLua.Extensions;
 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
-    using ObjCRuntime;
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
+using AOT.Fake;
 #endif
 
 using LuaState = KeraLua.Lua;
@@ -246,7 +246,7 @@ namespace NLua
          * Implementation of load_assembly. Throws an error
          * if the assembly is not found.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -352,7 +352,7 @@ namespace NLua
          * Implementation of import_type. Returns nil if the
          * type is not found.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -382,7 +382,7 @@ namespace NLua
          * argument in the stack) as an object subclassing the
          * type passed as second argument in the stack.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -451,7 +451,7 @@ namespace NLua
          * Implementation of free_object. Clears the metatable and the
          * base field, freeing the created object for garbage-collection
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -510,7 +510,7 @@ namespace NLua
          * Implementation of get_method_bysig. Returns nil
          * if no matching method is not found.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -577,7 +577,7 @@ namespace NLua
          * Implementation of get_constructor_bysig. Returns nil
          * if no matching constructor is found.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1142,7 +1142,7 @@ namespace NLua
             return 2;
         }
 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1164,7 +1164,7 @@ namespace NLua
             return 1;
         }
 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility

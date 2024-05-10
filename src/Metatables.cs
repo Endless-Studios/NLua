@@ -6,13 +6,14 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
 using KeraLua;
 
 using NLua.Method;
 using NLua.Extensions;
 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
-    using ObjCRuntime;
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
+    using AOT.Fake;
 #endif
 
 using LuaState = KeraLua.Lua;
@@ -85,7 +86,7 @@ namespace NLua
         /*
          * __call metafunction of CLR delegates, retrieves and calls the delegate.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -110,7 +111,7 @@ namespace NLua
         /*
          * __gc metafunction of CLR objects.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -135,7 +136,7 @@ namespace NLua
         /*
          * __tostring metafunction of CLR objects.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -163,7 +164,7 @@ namespace NLua
         /*
          * __add metafunction of CLR objects.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -183,7 +184,7 @@ namespace NLua
         /*
         * __sub metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -203,7 +204,7 @@ namespace NLua
         /*
         * __mul metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -223,7 +224,7 @@ namespace NLua
         /*
         * __div metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -243,7 +244,7 @@ namespace NLua
         /*
         * __mod metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -263,7 +264,7 @@ namespace NLua
         /*
         * __unm metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -307,7 +308,7 @@ namespace NLua
         /*
         * __eq metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -327,7 +328,7 @@ namespace NLua
         /*
         * __lt metafunction of CLR objects.
         */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -347,7 +348,7 @@ namespace NLua
         /*
          * __le metafunction of CLR objects.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -399,7 +400,7 @@ namespace NLua
          * either the value of the member or a delegate to call it.
          * If the member does not exist returns nil.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -705,7 +706,7 @@ namespace NLua
          * __index metafunction of base classes (the base field of Lua tables).
          * Adds a prefix to the method name to call the base version of the method.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1010,7 +1011,7 @@ namespace NLua
          * the member name and the value to be stored as arguments. Throws
          * and error if the assignment is invalid.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1217,7 +1218,7 @@ namespace NLua
         /*
          * __index metafunction of type references, works on static members.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1265,7 +1266,7 @@ namespace NLua
         /*
          * __newindex function of type references, works on static members.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1299,7 +1300,7 @@ namespace NLua
         /*
          * __call metafunction of Delegates. 
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1370,7 +1371,7 @@ namespace NLua
          * found or if the arguments are invalid. Throws an error if the constructor
          * generates an exception.
          */
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility

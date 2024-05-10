@@ -10,6 +10,9 @@
     <AssemblyName>NLua</AssemblyName>
     <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <PublicSign>false</PublicSign>
+    <AssemblyOriginatorKeyFile />
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,7 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -52,6 +55,11 @@
     <PackageReference Include="KeraLua">
       <Version>1.4.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\src\MonoPInvokeCallback.cs">
+      <Link>src\MonoPInvokeCallback.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="..\..\src\NLua.Shared.projitems" Label="Shared" Condition="Exists('..\..\src\NLua.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -10,8 +10,8 @@ using NLua.Method;
 using NLua.Exceptions;
 using NLua.Extensions;
 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
-    using ObjCRuntime;
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
+using AOT.Fake;
 #endif
 
 using LuaState = KeraLua.Lua;
@@ -337,7 +337,7 @@ namespace NLua
             _luaState = null;
         }
 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
         [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
@@ -1039,9 +1039,9 @@ namespace NLua
         /// <param name = "luaState">lua state</param>
         /// <param name = "luaDebug">Pointer to LuaDebug (lua_debug) structure</param>
         /// 
-#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__
+#if __IOS__ || __TVOS__ || __WATCHOS__ || __MACCATALYST__ || __ANDROID__
 #pragma warning disable CA1416 // Validate platform compatibility
-        [MonoPInvokeCallback(typeof(LuaHookFunction))]
+        [MonoPInvokeCallback(typeof(LuaNativeFunction))]
 #pragma warning restore CA1416 // Validate platform compatibility
 #endif
         static void DebugHookCallback(IntPtr luaState, IntPtr luaDebug)

@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DefineConstants>__IOS__</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

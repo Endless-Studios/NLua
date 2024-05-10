@@ -9,6 +9,7 @@
     <Import_RootNamespace>NLua</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\MonoPInvokeCallback.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CheckType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\DebugHookEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\HookExceptionEventArgs.cs" />
